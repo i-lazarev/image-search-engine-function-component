@@ -11,15 +11,18 @@ const App = () => {
   };
   const [state, setState] = useState(initState);
 
-  //   const [photos, setPhotos] = useState([]);
-  //   const [choosenIndex, setChoosenIndex] = useState(null);
+  //const [photos, setPhotos] = useState([]);
+  //const [choosenImageIndex, setChoosenImageIndex] = useState(null);
 
-  previewImage = (idx) => {
+  const previewImage = (idx) => {
     setState({ ...state, choosenImageIndex: idx });
+    //setChoosenImageIndex(idx)
   };
 
-  savePhotos = (results) => {
+  const savePhotos = (results) => {
     setState({ photos: results, choosenImageIndex: null });
+    //setPhotos(results)
+    //setChoosenImageIndex(null)
   };
   return (
     <div>
@@ -28,10 +31,12 @@ const App = () => {
       </h1>
       <div className="container">
         <SearchBar save={savePhotos} />
-        {photos.length && choosenIndex !== null ? (
-          <Preview photoUrl={photos[choosenImageIndex].largeImageURL} />
+        {state.photos.length && state.choosenImageIndex !== null ? (
+          <Preview
+            photoUrl={state.photos[state.choosenImageIndex].largeImageURL}
+          />
         ) : null}
-        <Gallery preview={previewImage} photos={photos} />
+        <Gallery preview={previewImage} photos={state.photos} />
       </div>
     </div>
   );

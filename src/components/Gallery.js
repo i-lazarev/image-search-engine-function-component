@@ -1,7 +1,7 @@
 import React from "react";
 
 const Gallery = (props) => {
-  previewBtnClick = (index) => {
+  const previewBtnClick = (index) => {
     props.preview(index);
   };
 
